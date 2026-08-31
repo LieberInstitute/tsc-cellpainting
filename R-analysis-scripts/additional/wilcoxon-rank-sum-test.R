@@ -17,7 +17,7 @@ featuresHypoxiaF <- featuresHypoxia[featuresHypoxia$Metadata_Sex == 'Female',]
 featuresNormoxiaM <- featuresNormoxia[featuresNormoxia$Metadata_Sex == 'Male',]
 featuresNormoxiaF <- featuresNormoxia[featuresNormoxia$Metadata_Sex == 'Female',]
 
-#Wilcoxian Rank-Sum Test for diagnosis - well level (normoxia)
+#wilcoxon Rank-Sum Test for diagnosis - well level (normoxia)
 WRST_normoxia_Dx <- featuresNormoxia[,-c(1:3,5:9)]
 
 p_values1 <- sapply(WRST_normoxia_Dx[,2:441], function(x) {
@@ -31,7 +31,7 @@ results1 <- data.frame(
   Adjusted_P = adjusted_p1
 )
 
-#Wilcoxian Rank-Sum Test for sex - well level (normoxia)
+#wilcoxon Rank-Sum Test for sex - well level (normoxia)
 WRST_normoxia_Sex <- featuresNormoxia[,-c(1:2,4:9)]
 
 p_values3 <- sapply(WRST_normoxia_Sex[,2:441], function(x) {
@@ -45,7 +45,7 @@ results3 <- data.frame(
   Adjusted_P = adjusted_p3
 )
 
-#Wilcoxian Rank-Sum Test for diagnosis - well level (hypoxia)
+#wilcoxon Rank-Sum Test for diagnosis - well level (hypoxia)
 WRST_hypoxia_Dx <- featuresHypoxia[,-c(1:3,5:9)]
 
 p_values5 <- sapply(WRST_hypoxia_Dx[,2:441], function(x) {
@@ -59,7 +59,7 @@ results5 <- data.frame(
   Adjusted_P = adjusted_p5
 )
 
-#Wilcoxian Rank-Sum Test for sex - well level (hypoxia)
+#wilcoxon Rank-Sum Test for sex - well level (hypoxia)
 WRST_hypoxia_Sex <- featuresHypoxia[,-c(1:2,4:9)]
 
 p_values7 <- sapply(WRST_hypoxia_Sex[,2:441], function(x) {
@@ -79,7 +79,7 @@ write.csv(results5,file="feature-pvalues-hypoxia-Dx-well.csv")
 write.csv(results7,file="feature-pvalues-hypoxia-Sex-well.csv")
 
 
-#Wilcoxian Rank-Sum Test for diagnosis - well level (normoxia, MALE)
+#wilcoxon Rank-Sum Test for diagnosis - well level (normoxia, MALE)
 WRST_normoxia_DxM <- featuresNormoxiaM[,-c(1:3,5:9)]
 
 p_values9 <- sapply(WRST_normoxia_DxM[,2:441], function(x) {
@@ -93,7 +93,7 @@ results9 <- data.frame(
   Adjusted_P = adjusted_p9
 )
 
-#Wilcoxian Rank-Sum Test for diagnosis - well level (normoxia, FEMALE)
+#wilcoxon Rank-Sum Test for diagnosis - well level (normoxia, FEMALE)
 WRST_normoxia_DxF <- featuresNormoxiaF[,-c(1:3,5:9)]
 
 p_values10 <- sapply(WRST_normoxia_DxF[,2:441], function(x) {
@@ -107,7 +107,7 @@ results10 <- data.frame(
   Adjusted_P = adjusted_p10
 )
 
-#Wilcoxian Rank-Sum Test for diagnosis - well level (hypoxia, MALE)
+#wilcoxon Rank-Sum Test for diagnosis - well level (hypoxia, MALE)
 WRST_hypoxia_DxM <- featuresHypoxiaM[,-c(1:3,5:9)]
 
 p_values11 <- sapply(WRST_hypoxia_DxM[,2:441], function(x) {
@@ -121,7 +121,7 @@ results11 <- data.frame(
   Adjusted_P = adjusted_p11
 )
 
-#Wilcoxian Rank-Sum Test for diagnosis - well level (hypoxia, MALE)
+#wilcoxon Rank-Sum Test for diagnosis - well level (hypoxia, MALE)
 WRST_hypoxia_DxF <- featuresHypoxiaF[,-c(1:3,5:9)]
 
 p_values12 <- sapply(WRST_hypoxia_DxF[,2:441], function(x) {
