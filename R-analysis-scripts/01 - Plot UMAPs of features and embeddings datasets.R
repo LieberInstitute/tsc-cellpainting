@@ -1,4 +1,4 @@
-install.packages("dplyr","umap","ggplot2","magrittr"))
+install.packages("dplyr","umap","ggplot2","magrittr")
 library(dplyr)
 library(umap)
 library(ggplot2)
@@ -16,6 +16,60 @@ embeddings = read.csv("C:\\Users\\frank.piscotta\\OneDrive - Lieber Institute fo
 embeddings <- embeddings[embeddings$Metadata_Cell_line != 'CT29' & embeddings$Metadata_Cell_line != 'CT30',]
 features = read.csv("C:\\Users\\frank.piscotta\\OneDrive - Lieber Institute for Brain Development\\Documents\\Cell Painting\\TSC Project\\TSC paper\\CellProfiler analysis\\all-oxygen_triplicate_feature-selected-manually-curated.csv")
 features <- features[features$Metadata_Cell_line != 'CT29' & features$Metadata_Cell_line != 'CT30',]
+
+embeddings[embeddings == "1A"] <- "SCZ-F-1"
+embeddings[embeddings == "2A"] <- "SCZ-F-2"
+embeddings[embeddings == "11A"] <- "SCZ-F-3"
+embeddings[embeddings == "17A"] <- "SCZ-F-4"
+embeddings[embeddings == "20A"] <- "SCZ-F-5"
+
+embeddings[embeddings == "3B"] <- "Ctrl-F-1"
+embeddings[embeddings == "4B"] <- "Ctrl-F-2"
+embeddings[embeddings == "8B"] <- "Ctrl-F-3"
+embeddings[embeddings == "9B"] <- "Ctrl-F-4"
+embeddings[embeddings == "16B"] <- "Ctrl-F-5"
+
+embeddings[embeddings == "1002.01"] <- "SCZ-M-1"
+embeddings[embeddings == "1006.02"] <- "SCZ-M-2"
+embeddings[embeddings == "1013.04"] <- "SCZ-M-3"
+embeddings[embeddings == "6A"] <- "SCZ-M-4"
+embeddings[embeddings == "7A"] <- "SCZ-M-5"
+embeddings[embeddings == "12A"] <- "SCZ-M-6"
+embeddings[embeddings == "13A"] <- "SCZ-M-7"
+embeddings[embeddings == "19A"] <- "SCZ-M-8"
+
+embeddings[embeddings == "1009.04"] <- "Ctrl-M-1"
+embeddings[embeddings == "1016.02"] <- "Ctrl-M-2"
+embeddings[embeddings == "15B"] <- "Ctrl-M-3"
+embeddings[embeddings == "9c1"] <- "Ctrl-M-4"
+embeddings[embeddings == "7c6"] <- "Ctrl-M-5"
+
+features[features == "1A"] <- "SCZ-F-1"
+features[features == "2A"] <- "SCZ-F-2"
+features[features == "11A"] <- "SCZ-F-3"
+features[features == "17A"] <- "SCZ-F-4"
+features[features == "20A"] <- "SCZ-F-5"
+
+features[features == "3B"] <- "Ctrl-F-1"
+features[features == "4B"] <- "Ctrl-F-2"
+features[features == "8B"] <- "Ctrl-F-3"
+features[features == "9B"] <- "Ctrl-F-4"
+features[features == "16B"] <- "Ctrl-F-5"
+
+features[features == "1002.01"] <- "SCZ-M-1"
+features[features == "1006.02"] <- "SCZ-M-2"
+features[features == "1013.04"] <- "SCZ-M-3"
+features[features == "6A"] <- "SCZ-M-4"
+features[features == "7A"] <- "SCZ-M-5"
+features[features == "12A"] <- "SCZ-M-6"
+features[features == "13A"] <- "SCZ-M-7"
+features[features == "19A"] <- "SCZ-M-8"
+
+features[features == "1009.04"] <- "Ctrl-M-1"
+features[features == "1016.02"] <- "Ctrl-M-2"
+features[features == "15B"] <- "Ctrl-M-3"
+features[features == "9c1"] <- "Ctrl-M-4"
+features[features == "7c6"] <- "Ctrl-M-5"
 
 set.seed(120)
 
@@ -117,7 +171,7 @@ embeddingsLinesNormoxia <- ggplot(embeddings_umap_normoxia, aes(x = UMAP1,y = UM
   scale_color_manual(values=c25) +
   theme(axis.title = element_text(size=20,face="bold"),
         axis.text = element_text(size=20,face="bold"),
-        legend.text = element_text(size=16),
+        legend.text = element_text(size=12),
         legend.title = element_text(size=16,face="bold",hjust = 0.5),
         legend.position = "right",
         legend.background = element_rect(color='black')
@@ -130,7 +184,7 @@ embeddingsLinesHypoxia <- ggplot(embeddings_umap_hypoxia, aes(x = UMAP1,y = UMAP
   scale_color_manual(values=c25) +
   theme(axis.title = element_text(size=20,face="bold"),
         axis.text = element_text(size=20,face="bold"),
-        legend.text = element_text(size=16),
+        legend.text = element_text(size=12),
         legend.title = element_text(size=16,face="bold",hjust = 0.5),
         legend.position = "right",
         legend.background = element_rect(color='black')
@@ -208,7 +262,7 @@ featuresLinesNormoxia <- ggplot(features_umap_normoxia, aes(x = UMAP1,y = UMAP2,
   scale_color_manual(values=c25) +
   theme(axis.title = element_text(size=20,face="bold"),
         axis.text = element_text(size=20,face="bold"),
-        legend.text = element_text(size=16),
+        legend.text = element_text(size=12),
         legend.title = element_text(size=16,face="bold",hjust = 0.5),
         legend.position = "right",
         legend.background = element_rect(color='black')
@@ -221,7 +275,7 @@ featuresLinesHypoxia <- ggplot(features_umap_hypoxia, aes(x = UMAP1,y = UMAP2, c
   scale_color_manual(values=c25) +
   theme(axis.title = element_text(size=20,face="bold"),
         axis.text = element_text(size=20,face="bold"),
-        legend.text = element_text(size=16),
+        legend.text = element_text(size=12),
         legend.title = element_text(size=16,face="bold",hjust = 0.5),
         legend.position = "right",
         legend.background = element_rect(color='black')
@@ -240,7 +294,7 @@ platesFeatures <- ggplot(features_umap, aes(x = UMAP1,y = UMAP2, color = Plate))
         legend.background = element_rect(color='black')
   )
 
-#Eport plots
+#Export plots
 ggsave("normoxia_sexClass.tiff", embeddingsNormoxiaSex, width = 6, height = 6, units = 'in', dpi = 800, compression = "lzw")
 ggsave("hypoxia_sexClass.tiff", embeddingsHypoxiaSex, width = 6, height = 6, units = 'in', dpi = 800, compression = "lzw")
 ggsave("normoxia_dxClass.tiff", embeddingsNormoxiaDx, width = 6, height = 6, units = 'in', dpi = 800, compression = "lzw")
